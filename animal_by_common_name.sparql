@@ -1,0 +1,12 @@
+#+ endpoint: http://192.168.1.9:7200/repositories/IUCN
+
+PREFIX nc: <http://iucn-knowledge-graph.org/class/>
+PREFIX np: <http://iucn-knowledge-graph.org/property/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?animal ?property ?value
+WHERE {
+    ?animal np:hasCommonName ?name;
+        ?property ?value.
+    FILTER CONTAINS(?name, ?_name)
+}
